@@ -15,6 +15,10 @@ async function handleRequest(request) {
           });
       }
 
+      if (url.pathname === "/robots.txt") {
+          return new Response("User-agent: *\nDisallow: /", { headers: { "Content-Type": "text/plain" },});
+      }
+    
       // 从请求路径中提取目标 URL
       let actualUrlStr = decodeURIComponent(url.pathname.replace("/", ""));
 
